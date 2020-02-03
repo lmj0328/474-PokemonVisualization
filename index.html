@@ -1,56 +1,94 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <title>Midterm - Pokemon Visualization</title>
-        <script src='https://d3js.org/d3.v4.min.js'></script>
-        <style>
-            h1 {
-                font-size: 20px;
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                font-weight: normal;
-            }
+  <head>
+    <meta charset="utf-8">
+    <title>Midterm - Pokemon Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <style>
+        h1 {
+            font-size: 23px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: normal;
+        }
 
-            #viz {
-                width: 1050px;
-                height: 700px;
-                margin: 10px 20px;
-                background-color: black;
-                display: inline-block
-            }
+        div#viz {
+            width: 1050px;
+            height: 700px;
+            margin-left: 20px;
+            display: inline-block;
+        }
 
-            #rightPanel {
-                width: 300px;
-                height: 700px;
-                margin-top: 10px;
-                background-color: blue;
-                float: right;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Pokemon: Special Defense vs Total Stats</h1>
-        <div id="viz"></div>
-        <div id="rightPanel"></div>
+        div#rightPanel {
+            width: 300px;
+            height: 700px;
+            margin-right: 20px;
+            float: right;
+        }
 
-        <script>
-           const colors = {
-                "Bug": "#4E79A7",
-                "Dark": "#A0CBE8",
-                "Electric": "#F28E2B",
-                "Fairy": "#FFBE&D",
-                "Fighting": "#59A14F",
-                "Fire": "#8CD17D",
-                "Ghost": "#B6992D",
-                "Grass": "#499894",
-                "Ground": "#86BCB6",
-                "Ice": "#86BCB6",
-                "Normal": "#E15759",
-                "Poison": "#FF9D9A",
-                "Psychic": "#79706E",
-                "Steel": "#BAB0AC",
-                "Water": "#D37295"
-            }
-        </script>
-            
-    </body>
-</html> 
+        select {
+            width: 100px;
+            height: 50px;
+            margin: 30px 20px;
+            font-size: 15px;
+        }
+
+        div.tooltip {	
+            position: absolute;			
+            text-align: left;			
+            padding: 12px 20px 10px 12px;				
+            font: 13px sans-serif;		
+            background: rgb(255, 255, 255);	
+            border: 1px solid rgb(173, 173, 173);		
+            border-radius: 8px;			
+            pointer-events: none;
+            box-shadow: 5 6;			
+        }
+
+        div.pokemon-label {
+            height: 25px;
+            width: 100px;
+            text-align: left;			
+            font: 13px sans-serif;
+            padding-left: 20px;	
+        }
+
+        div.label {
+            height: 15px;
+            width: 15px;
+            text-align: left;
+            font: 13px sans-serif;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        div.pokemon-name {
+            display: inline-block;
+            padding-left: 5px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Pokemon: Special Defense vs Total Stats</h1>
+    <div id="viz"></div>
+    <div id="rightPanel">
+        <select id="pokemon-generation-selector">
+            <option value="all">(All)</option>
+            <option value="1">1</option>
+            <option value="2">2</option> 
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option> 
+            <option value="6">6</option>
+        </select>
+        <select id="pokemon-legendary-selector">
+            <option value="all">All</option>
+            <option value="True">True</option>
+            <option value="False">False</option> 
+        </select>
+        <div id="pokemon-type-label"></div>
+    </div>
+    <script src="js/index.js"></script>
+  </body>
+</html>
+
